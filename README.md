@@ -1,5 +1,5 @@
 # OPERATION MIND SHIELD- ALZHEIMER DIAGNOSIS
-This repository contains a machine learning model that predicts the likelihood of a patient being diagnosed with Alzheimer's Disease.
+#### This repository contains a machine learning model that predicts the likelihood of a patient being diagnosed with Alzheimer's Disease.
 
 
 ![WhatsApp Image 2024-10-08 at 11 45 06 AM](https://github.com/user-attachments/assets/c0f021b3-8f08-4dbd-a165-0c13a4b0a4f1)
@@ -136,6 +136,14 @@ The model was deployed using Flask and hosted on Render for easy access. The web
         Behavioral Problems
         ADL
     The application uses the pre-trained CatBoost model to evaluate the input and returns a prediction.
+
+### Key Learnings
+
+During the development of this project, I gained deeper insights into:
+
+Feature Selection: Using the SelectKBest algorithm with various scoring functions (e.g., Chi-square, F-classif) to identify the most relevant features for predictive modeling.
+
+Error Handling: Implementing error-handling techniques for valid input within the data distribution.
 
 ### Access the Web App
 
