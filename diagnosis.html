@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alzheimer's Diagnosis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 50px;
+            text-align: center;
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+            width: 300px;
+        }
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1.2em;
+            border-radius: 8px;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.4em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enter Your Details</h1>
+        <form id="diagnosisForm">
+            <input type="text" id="MMSE" placeholder="MMSE Score" required><br>
+            <input type="text" id="FunctionalAssessment" placeholder="Functional Assessment Score" required><br>
+            <input type="text" id="MemoryComplaints" placeholder="Memory Complaints Score" required><br>
+            <input type="text" id="BehavioralProblems" placeholder="Behavioral Problems Score" required><br>
+            <input type="text" id="ADL" placeholder="ADL Score" required><br>
+            <div class="button" onclick="submitForm()">Diagnose</div>
+        </form>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function submitForm() {
+            // Get form data
+            const data = {
+                MMSE: parseFloat(document.getElementById('MMSE').value),
+                FunctionalAssessment: parseFloat(document.getElementById('FunctionalAssessment').value),
+                MemoryComplaints: parseFloat(document.getElementById('MemoryComplaints').value),
+                BehavioralProblems: parseFloat(document.getElementById('BehavioralProblems').value),
+                ADL: parseFloat(document.getElementById('ADL').value)
+            };
+
+            // Send data to Flask API
+            fetch('/diagnos', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                document.getElementById('result').innerHTML = 'Diagnosis: ' + result.diagnosis + '<br>Recommendations: ' + result.recommendations;
+            })
+            .catch(error => {
+                document.getElementById('result').innerHTML = 'Error: ' + error;
+            });
+        }
+    </script>
+</body>
+</html>

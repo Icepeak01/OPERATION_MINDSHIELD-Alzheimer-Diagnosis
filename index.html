@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alzheimer's Diagnosis App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('{{ url_for('static', filename='img.png') }}'); /* Use Flask's url_for */
+            background-size: cover;
+            color: #ffffff;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2em;
+        }
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1.2em;
+            border-radius: 8px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Alzheimer's Diagnosis App</h1>
+        <p>Welcome to our app! This tool uses machine learning to predict Alzheimer's diagnosis based on user input. Start the diagnosis process to receive a prediction and personalized recommendations.</p>
+        <a href="/diagnosis" class="button">Start Diagnosis</a>
+    </div>
+</body>
+</html>
